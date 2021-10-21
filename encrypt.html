@@ -1,0 +1,127 @@
+<!-- PSEUDOCODE
+ OBJECTIVE: take a message from a user and encrypt it
+ then using the cypher, decrypt it
+
+1. Get input from user
+2. take each characer then changing them to the alternate set of characters
+    - be sure to consider capital letters and altnerate characters
+3. display the cyphered message to the viewer -->
+
+<!DOCTYPE html>
+<html>
+    <head>
+    <meta charset="utf-8">
+    <meta name="viewport"
+    content="width=device-width">
+    
+    <title>Encryptor</title>
+        
+    <script>
+        // array statements
+        const alphabet = ['A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z'];
+    
+        // accesses the encrypt function in encryptTemplate.js
+        function encryptText() {
+        
+        // accesses document by form id 0
+        const form = document.forms[0];
+        
+        // getElementById from the title
+        let title=
+        document.getElementById("titleId");
+        
+        // sets up the display in the html after the function is performed
+        title.innerHTML = "Text Shifted Left";
+        
+        //sets up the shifting function by accessing the array
+        let shift= Number(form.shift.value);
+        
+        let sourceText =
+            form.sourceText.value;
+        
+        // connects characters to addresses in the array
+        form.sourceText.value 
+            = [... sourceText ].map(char =>
+            encrypt(char, shift)).join('');
+        }
+        
+        // sets up a similar function but in the opposite direction through the array
+        function decryptText() {
+        const form = document.forms[0];
+        let title = document.getElementById("titleId");       
+        
+        // sets up the display text for the decrypt button/function
+        title.innerHTML = "Text Shifted Right";
+        
+        // tells the computer how to shift/decrypt through the array
+        let shift =   
+            Number(form.shift.value);
+        let sourceText = 
+            form.sourceText.value;
+        shift = 
+            (alphabet.length - shift) %
+            alphabet.length;
+        
+        // does the same with encrypting
+        form.sourceText.value 
+            = [... sourceText ].map(char =>
+                encrypt(char,    
+                shift)).join('');
+        }
+        
+        function encrypt(char, shift) {
+        let include =
+        alphabet.includes(
+            char.toUpperCase()); 
+        // changes all characters to uppercase for simplicity
+        if (include){
+        let position =
+            alphabet.indexOf(
+            char.toUpperCase());
+        
+        // prepares to display the function through the html, returns each individual character in order
+        let newPosition = 
+            (position+shift) %
+            alphabet.length;
+        return alphabet[newPosition];
+        }else  return char;
+        }
+    </script>
+    </head>
+
+    <body>
+    <form>
+        <!-- title + Id -->
+        <h1>Encryptor</h1>
+        <p id="titleId"></p>
+        
+        <div>
+            <!-- gives the text box for the input, details size and character values -->
+            <textarea name="sourceText" 
+            rows="8"
+            cols="50"
+            spellcheck="false"
+            value="">
+            </textarea>
+        </div>
+        
+        <div>
+            <!-- one letter shift with the caesar cypher -->
+            <select id="shift" name="shift">
+            <option value="1">1</option>
+            </select> 
+        </div>
+        
+        <div>
+            <!-- button inputs for encrypting command, also accesses the functions by id -->
+            <input type="button" id="decrypt"
+            value="Encrypt"
+            onclick="encryptText();">
+            <input type="button" id="decrypt"
+            value="Decrypt"
+            onclick="decryptText();">
+        </div>
+        
+        </form>
+    </body>
+</html>
