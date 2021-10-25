@@ -1,35 +1,31 @@
+<!-- determines the type of document (html 5) to be renderred/displayed by the browser -->
 <!DOCTYPE html>
+<!-- opening to the html tag -->
 <html>
-<head>
-    <meta charset = "UTF-8">
-    <title>Game Template File</title>
-    <!-- <script src="js/main002.js"></script> -->
-    <!-- <script src="js/main003.js"></script> -->
-    <!-- <script src="js/main004.js"></script> -->
-    <!-- <script src="js/main005.js"></script> -->
-    <!-- <script src="js/main006.js"></script> -->
-    <script src="js/main007.js"></script>
-    
-</head>
-<!-- uncomment below for examples 003 onward -->
-<body onload="init()">
-
-<!-- uncomment below for example 002  -->
-<!-- <body onload="draw()"> -->
-<body>
-    
-</body>
-<!-- 
-Uncomment links below for examples 000 and 001.   
-Code is read from top to bottom.  If the a JS function looks for an element
-in the body and it hasn't been loaded yet, it will error. 
-So we can have the JS file linked after the body is loaded when it is looking for elements
-in the body.  The body of the document must be loaded first to 
-access and append new elemnts with js, such as DIVs and the canvas.
-The alternative is onload="somefunction()" in body tag, which calls a function
-after the body has been loaded by the browser.  This will be used for 002
-and up...
--->
-<!-- <script src="js/main000.js"></script> -->
-<!-- <script src="js/main001.js"></script> -->
+  <!-- opening to the header of the document -->
+  <head>
+    <!-- determines the character set for the document (not essential, but just in case) -->
+    <meta charset="utf-8">
+    <!-- title of the tab -->
+    <title>My test page</title>
+    <!-- links to a seperate file -->
+    <link href="css/myStyle.css" rel="stylesheet">
+    <!-- links to a javascript file -->
+    <script src="js/myFirstJavascript.js"></script>
+  <!-- closes the head tag -->
+  </head>
+  <!-- the main body tag of the document, the stuff you actually see in the document -->
+  <body onload="draw()">
+    <canvas id="canvas" width="150" height="150"></canvas>
+    <!-- header 1, similar to <head></head> -->
+    <h1>My first web page!!!</h1>
+    <!-- paragraph -->
+    <p>Hello world...</p>
+      <a href="https://bcp.org">GO BELLS!!!</a>
+    <!-- loads an image with the link and the caption -->
+    <img width="1000px" src="images/firefox-icon.png" alt="My test image">
+    <script src="js/myFirstJavascript.js"></script>
+  <!-- closing to the body tag -->
+  </body>
+<!-- closes the html tag -->
 </html>
